@@ -1,0 +1,25 @@
+{
+    "name": "C2Puml",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "dev",
+    "runServices": [
+        "dev"
+    ],
+    "initializeCommand": "./setup_env.sh",
+    "overrideCommand": true,
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "phind.phind",
+                "Codeium.codeium",
+                "ms-python.python",
+                "ms-python.pylint",
+                "ms-python.black-formatter",
+                "ms-python.isort",
+                "ms-toolsai.jupyter",
+                "jasew.vscode-helix-emulation"
+            ]
+        }
+    }
+}

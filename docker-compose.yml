@@ -1,0 +1,18 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+      args:
+        - USER_NAME=${USER_NAME}
+        - USER_UID=${USER_UID}
+        - USER_GID=${USER_GID}
+    hostname: dev-fedora
+    container_name: dev
+    image: dev:latest
+    env_file: .env
+    volumes:
+      - .:/workspace
+      - ~/.ssh:${HOME}/.ssh
+      - ~/.zshrc:${HOME}/.zshrc

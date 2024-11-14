@@ -1,0 +1,48 @@
+{
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.rulers": [
+    80
+  ],
+  "editor.tabSize": 4,
+  "editor.lineNumbers": "relative",
+  "editor.inlayHints.enabled": "on",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always",
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  // Python related settings
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.tabSize": 4,
+  },
+  "black-formatter.args": [
+    "--config",
+    "${workspaceFolder}/pyproject.toml",
+  ],
+  "black-formatter.cwd": "${workspaceFolder}",
+  "pylint.args": [
+    "--rcfile=${workspaceFolder}/pyproject.toml",
+  ],
+  "pylint.cwd": "${workspaceFolder}",
+  "isort.args": [
+    "--settings-file",
+    "${workspaceFolder}/pyproject.toml",
+    "--settings-path",
+    "${workspaceFolder}",
+  ],
+  "python.analysis.inlayHints.callArgumentNames": "all",
+  "python.analysis.inlayHints.functionReturnTypes": false,
+  "python.analysis.inlayHints.variableTypes": false,
+  "python.analysis.inlayHints.pytestParameters": false,
+  "python.analysis.autoImportCompletions": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  "python.testing.pytestArgs": [
+    "src"
+  ],
+}

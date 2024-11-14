@@ -1,0 +1,28 @@
+# Configure formatting tool black
+[tool.black]
+line-length = 80
+skip-string-normalization = true
+skip-magic-trailing-comma = true
+
+# Configure import sorting tool isort
+[tool.isort]
+profile = "black"
+
+# Configure linting tool pylint
+[tool.pylint.message_control]
+disable = [
+  "import-error",
+  "relative-beyond-top-level",
+  "missing-module-docstring",
+  "missing-class-docstring",
+  "missing-function-docstring",
+  "too-few-public-methods",
+  "invalid-name",
+  "protected-access",
+]
+
+# Configure testing tool pytest
+[tool.pytest.ini_options]
+pythonpath = [
+  "src",
+]
