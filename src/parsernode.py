@@ -56,7 +56,7 @@ class ParserNode(ABC):
                 self._children.append(
                     FunctionNode(match.group(2), self._file, match.group(1))
                 )
-            elif match := re.search(r"\b([a-zA-Z_]\w*)\s*\(", call):
+            elif match := re.search(r'\b([a-zA-Z_]\w*)\s*\(', call):
                 self._children.append(
                     FunctionNode(match.group(1), self._file, self._scope)
                 )
@@ -90,7 +90,7 @@ class FunctionNode(ParserNode):
             open_curly_braces, open_cf_curly_braces = 0, 0
 
             for line in file:
-                line = re.sub(r'//.*', "", line)  # Remove comments
+                line = re.sub(r'//.*', '', line)  # Remove comments
                 line = line.strip()
                 if not line:
                     continue
@@ -186,7 +186,7 @@ class ControlflowNode(ParserNode):
     def _get_condition(self) -> str:
         stmt = self._block[0]
         match = re.search(r'\bif\s*\((.+)\)', stmt)
-        condition = match.group(1) if match else ""
+        condition = match.group(1) if match else ''
         return condition
 
     @classmethod
@@ -200,7 +200,7 @@ class ControlflowNode(ParserNode):
             case ['else', *_]:
                 return ElseNode(block, file, scope)
             case _:
-                raise ValueError(f'No matching controlflow for "{block[0]}')
+                raise ValueError(f'No matching controlflow for "{block[0]}"')
 
 
 class IfNode(ControlflowNode):
