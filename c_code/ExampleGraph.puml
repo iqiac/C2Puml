@@ -1,0 +1,57 @@
+@startuml
+skin rose
+
+title ExampleGraph.puml
+
+cloud "TaskDependencyGraph" as taskDependencyGraph1 {
+(taskDependencyGraph1.start) --> (taskDependencyGraph1.task1)
+(taskDependencyGraph1.task1) --> (taskDependencyGraph1.task2)
+(taskDependencyGraph1.task1) --> (taskDependencyGraph1.task3)
+(taskDependencyGraph1.task2) ..> (taskDependencyGraph1.end)
+(taskDependencyGraph1.task3) ..> (taskDependencyGraph1.end)
+}
+cloud "TaskDependencyGraph" as taskDependencyGraph2 {
+(taskDependencyGraph2.start) --> (taskDependencyGraph2.task1)
+(taskDependencyGraph2.task1) --> (taskDependencyGraph2.task2)
+(taskDependencyGraph2.task1) --> (taskDependencyGraph2.task3)
+(taskDependencyGraph2.task2) ..> (taskDependencyGraph2.end)
+(taskDependencyGraph2.task3) ..> (taskDependencyGraph2.end)
+}
+cloud "DataflowGraph" as dataflowGraph1 {
+  (dataflowGraph1.start) . (dataflowGraph1.end)
+}
+cloud "DataflowGraph" as dataflowGraph2 {
+  (dataflowGraph2.start) . (dataflowGraph2.end)
+}
+cloud "FinishingGraph" as finishingGraph {
+rectangle "if condition1 && condition2" as cf0 {
+(finishingGraph.start) --> (finishingGraph.task3)
+(finishingGraph.task3) --> (finishingGraph.task6)
+(finishingGraph.task3) --> (finishingGraph.end)
+}
+rectangle "else if condition1" as cf2 {
+(finishingGraph.start) --> (finishingGraph.task1)
+(finishingGraph.task1) --> (finishingGraph.end)
+rectangle "if condition4" as cf1 {
+(finishingGraph.task1) --> (finishingGraph.task4)
+(finishingGraph.task4) --> (finishingGraph.end)
+}
+}
+rectangle "else" as cf3 {
+(finishingGraph.start) --> (finishingGraph.task2)
+(finishingGraph.start) --> (finishingGraph.task5)
+(finishingGraph.task2) ..> (finishingGraph.end)
+(finishingGraph.task2) ..> (finishingGraph.end)
+}
+rectangle "if !condition7" as cf4 {
+(finishingGraph.start) --> (finishingGraph.task7)
+(finishingGraph.task7) ..> (finishingGraph.end)
+}
+}
+(dataflowGraph1.end) -- (taskDependencyGraph1.start)
+(dataflowGraph1.end) -- (taskDependencyGraph2.start)
+(taskDependencyGraph1.end) ..> (dataflowGraph2.start)
+(taskDependencyGraph2.end) --> (dataflowGraph2.start)
+(dataflowGraph2.end) --> (finishingGraph.start)
+
+@enduml

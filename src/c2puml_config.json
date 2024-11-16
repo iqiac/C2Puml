@@ -1,0 +1,7 @@
+[
+  {
+    "entrypoint": "ExampleGraph_Create",
+    "srcpath": "./c_code/ExampleGraph.c",
+    "destpath": "./c_code/ExampleGraph.puml"
+  }
+]
